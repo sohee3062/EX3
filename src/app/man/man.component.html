@@ -1,0 +1,316 @@
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
+<style>
+  span,
+  a,
+  h2,
+  p,
+  tr,
+  td,
+  header,
+  input,
+  label,
+  pre {
+    font-weight: bold;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 20px;
+  }
+</style>
+
+<div id="main-wrapper">
+  <div id="main">
+    <div class="container">
+      <div class="content">
+        <form (ngSubmit)="onSubmit()">
+          <div>
+            <br />
+            <br />
+            <!--흡연경험 여부-->
+            <h2>4. 흡연 경험이 있으십니까? </h2>
+            <br />
+            <h2>흡연경험여부 :
+              <input type="radio" name="smoking" (click)="this.customerService.data().smoking = 0" checked="on"
+                (click)="smokingCheck()" style="width:15px;height:15px;"> NO <input type="radio" name="smoking"
+                (click)="this.customerService.data().smoking = 1" (click)="smokingCheck()"
+                style="width:15px;height:15px;"> YES </h2>
+            <br />
+
+            <!--흡연경험 여부 -> yes 일때-->
+            <div id="smoke" style="display:none">
+              <div class="form-group">
+                <h2>4-1. 흡연 기간을 기입해 주십시오.</h2>
+                <br />
+                <label for="uname">흡연기간_몇 갑:</label> <input type="number" class="form-control"
+                  placeholder="" name="smoking_day_cut" required
+                  [(ngModel)]="customerService.data().smoking_day_cut" style="width:200px">
+                <br />
+                <label for="uname">흡연기간_몇 년:</label> <input type="number" class="form-control"
+                  placeholder="" name="smoking_day" required
+                  [(ngModel)]="customerService.data().smoking_day" style="width:200px">
+                <br />
+                <h2>4-2. 혹시, 금연 중이라면 답해 주십시오.</h2>
+                <br />
+                <pre>금연기간 : <input type="number" class="form-control" placeholder=""  name="noSmoking_day" required [(ngModel)]="customerService.data().noSmoking_day" style="width:200px"> </pre>
+                <br />
+              </div>
+            </div>
+
+            <!--(본인)관련질환 유무-->
+            <h2>5. 본인이 가지고 있는 질환이 있다면 체크해 주십시오.</h2>
+            <br />
+            <table class="table table-hover">
+              <thead style="margin-left: auto; margin-right: auto; text-align: center;">
+                <tr>
+                  <th>질병 종류</th>
+                  <th colspan="4">관련 질환</th>
+                </tr>
+              </thead>
+              <tbody style="margin-left: auto; margin-right: auto; text-align: center;">
+                <tr>
+                  <!--갑상산암 관련-->
+                  <!--디폴트 값 = 0 (없다)-->
+                  <td>갑상선암</td>
+                  <td><input type="checkbox" name="tcancer" (click)="this.tcancer = 1" style="width:18px;height:18px;">
+                    경부 방사선 노출력</td>
+                  <td><input type="checkbox" name="tcancer" (click)="this.tcancer = 1" style="width:18px;height:18px;">
+                    갑상선 수질암</td>
+                  <td><input type="checkbox" name="tcancer" (click)="this.tcancer = 1" style="width:18px;height:18px;">
+                    선종성 융중증</td>
+                </tr>
+                <tr>
+                  <!--간암 관련-->
+                  <!--디폴트 값 = 0 (없다)-->
+                  <td>간암</td>
+                  <td><input type="checkbox" name="lcancer" (click)="this.lcancer = 1" style="width:18px;height:18px;">
+                    B형 감염 바이러스</td>
+                  <td><input type="checkbox" name="lcancer" (click)="this.lcancer = 1" style="width:18px;height:18px;">
+                    C형 감염 바이러스</td>
+                  <td><input type="checkbox" name="lcancer" (click)="this.lcancer = 1" style="width:18px;height:18px;">
+                    만성 B, C형 감염 바이러스</td>
+                  <td><input type="checkbox" name="lcancer" (click)="this.lcancer = 2" style="width:18px;height:18px;">
+                    간경화</td>
+                </tr>
+                <tr>
+                  <!--위암 관련-->
+                  <!--디폴트 값 = 0 (없다)-->
+                  <td>위암</td>
+                  <td><input type="checkbox" name="scancer" (click)="this.scancer = 1" style="width:18px;height:18px;">
+                    위축성 위염</td>
+                  <td><input type="checkbox" name="scancer" (click)="this.scancer = 1" style="width:18px;height:18px;">
+                    장상 피화생</td>
+                  <td><input type="checkbox" name="scancer" (click)="this.scancer = 1" style="width:18px;height:18px;">
+                    위선종(용종)</td>
+                  <td><input type="checkbox" name="scancer" (click)="this.scancer = 1" style="width:18px;height:18px;">
+                    부분 위절제</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <br />
+            <!--가족 병력 유무-->
+            <h2>6. 본인 및 가족이 가지고 있는 질환이 있다면 체크해 주십시오.</h2>
+            <br />
+            <table class="table table-hover">
+              <thead style="margin-left: auto; margin-right: auto; text-align: center;">
+                <tr>
+                  <th rowspan="2">질병 종류</th>
+                  <th colspan="5">있다(복수선택 가능)</th>
+                </tr>
+                <tr>
+                  <th>부모</th>
+                  <th>형제</th>
+                  <th>자매</th>
+                  <th>자녀</th>
+                </tr>
+              </thead>
+              <tbody style="margin-left: auto; margin-right: auto; text-align: center;">
+                <tr>
+                  <td>갑상선암</td>
+                  <!--디폴트 값 = 0 (없다)-->
+                  <td><input type="checkbox" name="tcancer_F" (click)="this.tcancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="checkbox" name="tcancer_F" (click)="this.tcancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="checkbox" name="tcancer_F" (click)="this.tcancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="checkbox" name="tcancer_F" (click)="this.tcancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                </tr>
+                <tr>
+                  <td>대장암</td>
+                  <!--디폴트 값 = 0 (없다)-->
+                  <td><input type="checkbox" name="cocancer_F" (click)="this.cocancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="checkbox" name="cocancer_F" (click)="this.cocancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="checkbox" name="cocancer_F" (click)="this.cocancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="checkbox" name="cocancer_F" (click)="this.cocancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                </tr>
+                <tr>
+                  <td>위암</td>
+                  <!--디폴트 값 = 0 (없다)-->
+                  <td><input type="checkbox" name="scancer_F" (click)="this.scancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="checkbox" name="scancer_F" (click)="this.scancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="checkbox" name="scancer_F" (click)="this.scancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="checkbox" name="scancer_F" (click)="this.scancer_F = 1"
+                      style="width:23px;height:23px;"></td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <br />
+
+            <!--검사 주기-->
+            <h2>7. 본인이 검사 받은 항목이 있다면 작성해 주십시오.</h2>
+            <br />
+
+            <table class="table table-hover">
+              <thead style="margin-left: auto; margin-right: auto; text-align: center;">
+                <tr>
+                  <th rowspan="2">질병</th>
+                  <th rowspan="2">검사명</th>
+                  <th colspan="6">질병 시기</th>
+                </tr>
+                <tr>
+                  <th> ~6개월</th>
+                  <th> 6개월 ~ 1년 </th>
+                  <th> 1년 ~ 2년 </th>
+                  <th> 2년 ~ 3년 </th>
+                  <th> 3년 ~ 5년 </th>
+                  <th> 5년이상, 없다</th>
+                </tr>
+
+              </thead>
+              <tbody style="margin-left: auto; margin-right: auto; text-align: center;">
+
+                <tr>
+                  <td>갑상선암</td>
+                  <td>갑상선 초음파</td>
+                  <td><input type="radio" name="tcancer_A" (click)="this.customerService.data().tcancer_A = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="tcancer_A" (click)="this.customerService.data().tcancer_A = 2"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="tcancer_A" (click)="this.customerService.data().tcancer_A = 3"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="tcancer_A" (click)="this.customerService.data().tcancer_A = 4"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="tcancer_A" (click)="this.customerService.data().tcancer_A = 5"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="tcancer_A" (click)="this.customerService.data().tcancer_A = 6"
+                      checked="on" style="width:23px;height:23px;"></td>
+                </tr>
+
+                <tr>
+                  <td>간암</td>
+                  <td>간초음파</td>
+                  <td><input type="radio" name="lcancer_A" (click)="this.customerService.data().lcancer_A = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="lcancer_A" (click)="this.customerService.data().lcancer_A = 2"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="lcancer_A" (click)="this.customerService.data().lcancer_A = 3"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="lcancer_A" (click)="this.customerService.data().lcancer_A = 4"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="lcancer_A" (click)="this.customerService.data().lcancer_A = 5"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="lcancer_A" (click)="this.customerService.data().lcancer_A = 6"
+                      checked="on" style="width:23px;height:23px;"></td>
+                </tr>
+
+                <tr>
+                  <td>폐암</td>
+                  <td>저선량 흉부 CT</td>
+                  <td><input type="radio" name="lucancer_A" (click)="this.customerService.data().lucancer_A = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="lucancer_A" (click)="this.customerService.data().lucancer_A = 2"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="lucancer_A" (click)="this.customerService.data().lucancer_A = 3"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="lucancer_A" (click)="this.customerService.data().lucancer_A = 4"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="lucancer_A" (click)="this.customerService.data().lucancer_A = 5"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="lucancer_A" (click)="this.customerService.data().lucancer_A = 6"
+                      checked="on" style="width:23px;height:23px;"></td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">대장암</td>
+                  <td>분변장혈검사</td>
+                  <td><input type="radio" name="cocancer_A" (click)="this.customerService.data().cocancer_A = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="cocancer_A" (click)="this.customerService.data().cocancer_A = 2"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="cocancer_A" (click)="this.customerService.data().cocancer_A = 3"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="cocancer_A" (click)="this.customerService.data().cocancer_A = 4"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="cocancer_A" (click)="this.customerService.data().cocancer_A = 5"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="cocancer_A" (click)="this.customerService.data().cocancer_A = 6"
+                      checked="on" style="width:23px;height:23px;"></td>
+                </tr>
+
+                <tr>
+                  <td>대장내시경</td>
+                  <td><input type="radio" name="cocancer_B" (click)="this.customerService.data().cocancer_B = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="cocancer_B" (click)="this.customerService.data().cocancer_B = 2"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="cocancer_B" (click)="this.customerService.data().cocancer_B = 3"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="cocancer_B" (click)="this.customerService.data().cocancer_B = 4"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="cocancer_B" (click)="this.customerService.data().cocancer_B = 5"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="cocancer_B" (click)="this.customerService.data().cocancer_B = 6"
+                      checked="on" style="width:23px;height:23px;"></td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2">위암</td>
+                  <td>위장조염검사</td>
+                  <td><input type="radio" name="scancer_A" (click)="this.customerService.data().scancer_A = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="scancer_A" (click)="this.customerService.data().scancer_A = 2"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="scancer_A" (click)="this.customerService.data().scancer_A = 3"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="scancer_A" (click)="this.customerService.data().scancer_A = 4"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="scancer_A" (click)="this.customerService.data().scancer_A = 5"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="scancer_A" (click)="this.customerService.data().scancer_A = 6"
+                      checked="on" style="width:23px;height:23px;"></td>
+                </tr>
+
+                <tr>
+                  <td>위내시경</td>
+                  <td><input type="radio" name="scancer_B" (click)="this.customerService.data().scancer_B = 1"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="scancer_B" (click)="this.customerService.data().scancer_B = 2"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="scancer_B" (click)="this.customerService.data().scancer_B = 3"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="scancer_B" (click)="this.customerService.data().scancer_B = 4"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="scancer_B" (click)="this.customerService.data().scancer_B = 5"
+                      style="width:23px;height:23px;"></td>
+                  <td><input type="radio" name="scancer_B" (click)="this.customerService.data().scancer_B = 6"
+                      checked="on" style="width:23px;height:23px;"></td>
+                </tr>
+
+              </tbody>
+            </table>
+            <input type="submit" class="btn btn-outline-primary" value="NEXT" style="float:right;">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
