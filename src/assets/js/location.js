@@ -1,4 +1,4 @@
-var city, price, something;
+var city, price, something = 0;
 var dataService;
 var hosSearchResult;
 var res_info;

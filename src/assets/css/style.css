@@ -263,8 +263,6 @@
             text-decoration: none;
          }
          
-         ul.style1 p {
-         }
          
          ul.style1 a:hover {
             text-decoration: underline;
@@ -348,10 +346,6 @@
       text-decoration: none;
    }
 
-      .fa.solo
-      {
-      }
-      
          .fa.solo span
          {
             display: none;
@@ -869,10 +863,10 @@
 /* Main                                                                          */
 /*********************************************************************************/
 
-   #main
+   /* #main
    {  
-     /*  background: url(../images/img14.jpg) repeat-y center; */
-   }
+       background: url(../images/img14.jpg) repeat-y center; 
+   } */
 
    #main-wrapper
    {
@@ -919,9 +913,6 @@
       color: rgba(255,255,255,.4);
    }
    
-   #copyright .container
-   {
-   }
    
    #copyright a
    {

@@ -51,7 +51,7 @@ export class SecondComponent implements OnInit {
     console.log(this.customerService.data());
 
     if (this.customerService.data().hosRecCheck == 0) {
-      document.getElementById("maps").style.display = "none";
+      document.getElementById("map").style.display = "none";
     }
 
   }
@@ -60,15 +60,16 @@ export class SecondComponent implements OnInit {
     this.res_info = dataTrans();
   }
 
-  private mapShow(inspection_item : String, hos_addr: String[], hos_name: String[], hos_no: String[]) {
+  private mapShow(inspection_item: String, cancer_name: String, hos_addr: String[], hos_name: String[], hos_no: String[]) {
 
+    console.log(inspection_item + "::::::::::" + cancer_name);
     console.log(hos_addr + "::::::::::" + hos_name + ":::::::::" + hos_no);
 
-    if(inspection_item != "검사가 필요한 항목이 없습니다.") {
-      if (hos_addr != null) {
-        console.log("if")
-        sec_map(hos_addr, hos_name, hos_no, this.dataService, this.res_info);
-      }
+    if (this.customerService.data().hosRecCheck == 0 || inspection_item == "검사가 필요한 항목이 없습니다." || cancer_name == "갑상선암" || cancer_name == "폐암") {
+      return;
+    }
+    if (hos_addr != null) {
+      sec_map(hos_addr, hos_name, hos_no, this.dataService, this.res_info);
     }
   }
 }

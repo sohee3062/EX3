@@ -8,13 +8,11 @@
    }
 
    .loader {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      z-index: 1;
-      width: 150px;
-      height: 150px;
-      margin: -75px 0 0 -75px;
+      position: relative;
+      left: 45%;
+      top: 100px;
+     
+
       border: 16px solid #f3f3f3;
       border-radius: 50%;
       border-top: 16px solid #3498db;
@@ -77,10 +75,12 @@
    <link rel="stylesheet" href="/assets/css/style-desktop.css" />
 </noscript>
 
+
 <div class="loader" id="loader">
 </div>
 
-<div id="container" style="display:none;">
+<div id="container"  style="display:none;">
+
    <!-- Main -->
    <div id="main-wrapper">
       <div id="main">
@@ -118,9 +118,9 @@
                   </div>
 
                   <div id="hosSearch" *ngFor="let check of this.checkup">
-                     <div id="mapShow" (click)="mapShow(check.inspection_item, check.hos_addr, check.hos_name, check.hos_no)"></div>
+                     <div id="mapShow" (click)="mapShow(check.inspection_item, check.cancer_name, check.hos_addr, check.hos_name, check.hos_no)"></div>
                      <div id="info" data-toggle="a" data-target="#a" (click)="data()"></div>
-                     <div id="map" style="width:1100px; height:500px;"></div>
+                     <div id="map" style="width:1120px; height:500px;"></div>
                   </div>
                </section>
             </div>
