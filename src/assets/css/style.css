@@ -863,10 +863,10 @@
 /* Main                                                                          */
 /*********************************************************************************/
 
-   /* #main
+    #main
    {  
-       background: url(../images/img14.jpg) repeat-y center; 
-   } */
+      background-color: #FFFFFF;
+   } 
 
    #main-wrapper
    {

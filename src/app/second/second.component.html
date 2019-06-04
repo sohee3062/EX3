@@ -11,7 +11,7 @@
       position: relative;
       left: 45%;
       top: 100px;
-     
+
 
       border: 16px solid #f3f3f3;
       border-radius: 50%;
@@ -79,50 +79,53 @@
 <div class="loader" id="loader">
 </div>
 
-<div id="container"  style="display:none;">
-
+<div id="container" style="display:none;">
    <!-- Main -->
    <div id="main-wrapper">
       <div id="main">
-         <div class="container">
-            <div id="content">
-               <header>
-                  <h2>검사 결과</h2>
-                  <span>(폐암과 갑상선암은 병원 추천 정보를 제공하지 않습니다.)</span>
-               </header>
-               <br>
-               <section  class="8u skel-cell-important">
-                  <div *ngFor="let check of this.checkup">
-                     <div class="cities" id="cities">
-                        <table class="table table-hover">
-                           <tbody style="margin-left: auto; margin-right: auto; text-align: center;">
-                              <tr>
-                                 <td width=150 style="table-layout: fixed"> 추천 항목 </td>
-                                 <td> {{check.cancer_name}} </td>
-                              </tr>
-                              <tr>
-                                 <td width=150 style="table-layout: fixed"> 추천 검진 </td>
-                                 <td> {{check.inspection_item}} </td>
-                              </tr>
-                              <tr>
-                                 <td width=150 style="table-layout: fixed"> 추천 이유 </td>
-                                 <td> {{check.inspection_reason}} </td>
-                              </tr>
-                              <tr>
-                                 <td width=150 style="table-layout: fixed"> 추천 설명 </td>
-                                 <td> {{check.cancer_info}} </td>
-                              </tr>
-                           </tbody>
-                        </table>
+         <div class="row justify-content-center">
+            <div class="container">
+               <div id="content">
+                  <header>
+                     <h2>검사 결과</h2>
+                     <span>(폐암과 갑상선암은 병원 추천 정보를 제공하지 않습니다.)</span>
+                  </header>
+                  <br>
+                  <section class="8u skel-cell-important">
+                     <div *ngFor="let check of this.checkup">
+                        <div class="cities" id="cities">
+                           <table class="table table-hover">
+                              <tbody style="margin-left: auto; margin-right: auto; text-align: center;">
+                                 <tr>
+                                    <td width=150 style="table-layout: fixed"> 추천 항목 </td>
+                                    <td> {{check.cancer_name}} </td>
+                                 </tr>
+                                 <tr>
+                                    <td width=150 style="table-layout: fixed"> 추천 검진 </td>
+                                    <td> {{check.inspection_item}} </td>
+                                 </tr>
+                                 <tr>
+                                    <td width=150 style="table-layout: fixed"> 추천 이유 </td>
+                                    <td> {{check.inspection_reason}} </td>
+                                 </tr>
+                                 <tr>
+                                    <td width=150 style="table-layout: fixed"> 추천 설명 </td>
+                                    <td> {{check.cancer_info}} </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
                      </div>
-                  </div>
 
-                  <div id="hosSearch" *ngFor="let check of this.checkup">
-                     <div id="mapShow" (click)="mapShow(check.inspection_item, check.cancer_name, check.hos_addr, check.hos_name, check.hos_no)"></div>
-                     <div id="info" data-toggle="a" data-target="#a" (click)="data()"></div>
-                     <div id="map" style="width:1120px; height:500px;"></div>
-                  </div>
-               </section>
+                     <div id="hosSearch" *ngFor="let check of this.checkup">
+                        <div id="mapShow"
+                           (click)="mapShow(check.inspection_item, check.cancer_name, check.hos_addr, check.hos_name, check.hos_no)">
+                        </div>
+                        <div id="info" data-toggle="a" data-target="#a" (click)="data()"></div>
+                        <div id="map" style="width:1120px; height:500px;"></div>
+                     </div>
+                  </section>
+               </div>
             </div>
          </div>
       </div>
@@ -213,15 +216,6 @@
             </div>
 
          </div>
-      </div>
-   </div>
-   <br>
-
-   <!-- Copyright -->
-   <div id="copyright">
-      <div class="container">
-         Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a>
-         (<a href="http://unsplash.com/cc0">CC0</a>)
       </div>
    </div>
 

@@ -6,7 +6,9 @@
   <title>HelloAngular</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -15,8 +17,6 @@
   <script src="assets/js/location.js"></script>
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a752e2b148b7d8de4d176a04c3992a16&libraries=services"></script>
 
@@ -61,7 +61,7 @@
                     <table class="ly_body_innter" style="margin-left: auto; margin-right: auto; text-align: center;">
                       <tr>
                         <td style="font-weight: bold; font-family: 'Nanum Gothic', sans-serif;font-size: 20px"> 시/도
-                          &nbsp;&nbsp;&nbsp;&nbsp; </td>
+                          &nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>
                           <span ng-repeat="optionKey in optionProperties">
                             <select style="width:150px;height:40px;" ng-if="$index === 0"
@@ -71,9 +71,9 @@
                             </select>
                           </span>
                         </td>
-                        <td> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+                        <td> &nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td style="font-weight: bold; font-family: 'Nanum Gothic', sans-serif;font-size: 20px"> 시/군/구
-                          &nbsp;&nbsp;&nbsp;&nbsp; </td>
+                          &nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>
                           <span ng-repeat="optionKey in optionProperties">
                             <select style="width:150px;height:40px;" ng-if="$index !== 0"
@@ -116,13 +116,12 @@
 
           <!-- Modal body -->
           <div class="modal-body">
-
             <div id="pop_wrap">
               <div id="pop_content">
                 <table class="ly_body_innter" style="margin-left: auto; margin-right: auto; text-align: center;">
                   <tr>
                     <td style="font-weight: bold; font-family: 'Nanum Gothic', sans-serif;font-size: 20px"> 시/도
-                      &nbsp;&nbsp;&nbsp;&nbsp; </td>
+                      &nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>
                       <span ng-repeat="optionKey in optionProperties">
                         <select style="width:150px;height:40px;" ng-if="$index === 0" ng-model="selectedOptions[$index]"
@@ -131,9 +130,9 @@
                         </select>
                       </span>
                     </td>
-                    <td> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td style="font-weight: bold; font-family: 'Nanum Gothic', sans-serif;font-size: 20px"> 시/군/구
-                      &nbsp;&nbsp;&nbsp;&nbsp; </td>
+                      &nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>
                       <span ng-repeat="optionKey in optionProperties">
                         <select style="width:150px;height:40px;" ng-if="$index !== 0" ng-model="selectedOptions[$index]"
@@ -145,7 +144,7 @@
                   </tr>
                 </table>
 
-                <table class="ly_body_innter" style="margin-left: auto; margin-right: auto;">
+                <table class="table" style="margin-left: auto; margin-right: auto; text-align: center">
                   <tr>
                     <td><input type="radio" name="check" onclick="something=0" style="width:23px;height:23px;"
                         checked>전체</input></td>
